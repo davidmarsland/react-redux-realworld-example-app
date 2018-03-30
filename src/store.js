@@ -15,6 +15,11 @@ const reducer = function(state = defaultState, action) {
 
 const middleware = applyMiddleware(promiseMiddleware);
 
-const store = createStore(reducer, middleware);
+// const store = createStore(reducer, middleware);
+
+/* eslint-disable no-undef */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(middleware));
+/* eslint-enable */
 
 export default store;
