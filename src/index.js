@@ -16,7 +16,11 @@ const reducer = function(state = defaultState, action) {
   }
   return state;
 };
-const store = createStore(reducer, applyMiddleware(promiseMiddleware));
+// const store = createStore(reducer, applyMiddleware(promiseMiddleware));
+/* eslint-disable no-undef */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(promiseMiddleware)));
+/* eslint-enable */
 
 ReactDOM.render((
   <Provider store={store}>
